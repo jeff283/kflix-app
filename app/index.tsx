@@ -5,7 +5,7 @@ export default function Index() {
     <View
    className="flex-1 items-center justify-center "
     >
-      <Text className="font-semibold text-3xl">Movie Application</Text>
+      <Text className="font-semibold text-3xl text-primary">Movie Application</Text>
     </View>
   );
 }
