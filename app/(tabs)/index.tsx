@@ -1,3 +1,4 @@
+import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
@@ -79,7 +80,7 @@ export default function Index() {
                 gap: 20,
               }}
               renderItem={({ item }) => (
-                <Text className="text-white text-sm">{item.title}</Text>
+                <MovieCard {...item}/>
               )}
             />
           </View>
