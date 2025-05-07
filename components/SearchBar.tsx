@@ -9,8 +9,8 @@ interface Props {
 
 const SearchBar = ({ onPress, placeholder }: Props) => {
   return (
-    // <View className='flex-row items-center bg-dark-200 px-5 py-4 border border-white/10 rounded-full'>
-    <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
+    // <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
+    <View className='flex-row items-center bg-dark-200 px-5 py-1 my-3 border border-white/30 rounded-full'>
       <Image
         source={icons.search}
         className="size-5"

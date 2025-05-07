@@ -63,7 +63,7 @@ export default function Index() {
 
             <>
               <Text className="text-lg text-white font-bold mt-5 mb-3">
-                Latest Movies{" "}
+                Latest Movies
               </Text>
             </>
 
