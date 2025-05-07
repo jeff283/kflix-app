@@ -4,7 +4,14 @@ import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
-import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 
 export default function Index() {
   const router = useRouter();
@@ -58,6 +65,23 @@ export default function Index() {
                 Latest Movies{" "}
               </Text>
             </>
+
+            <FlatList
+              data={movies}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={3}
+              scrollEnabled={false}
+              className="mt-2 pb-32"
+              columnWrapperStyle={{
+                justifyContent: "flex-start",
+                marginBottom: 10,
+                paddingRight: 5,
+                gap: 20,
+              }}
+              renderItem={({ item }) => (
+                <Text className="text-white text-sm">{item.title}</Text>
+              )}
+            />
           </View>
         )}
       </ScrollView>
