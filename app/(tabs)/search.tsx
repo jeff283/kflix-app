@@ -29,12 +29,7 @@ const search = () => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         // Trigger the fetch when searchQuery changes and is not empty
-        await loadMovies().then(() => {
-          if (movies && movies.length > 0) {
-            updateSearchCount(searchQuery, movies[0]);
-          }
-        });
-        // Update search count in Appwrite when a movie is selected
+        await loadMovies();
       } else {
         resetMovies(); // Reset the movies when searchQuery is empty
       }
@@ -45,6 +40,11 @@ const search = () => {
     };
   }, [searchQuery]);
 
+  useEffect(() => {
+    if (searchQuery.trim() && movies && movies.length > 0) {
+      updateSearchCount(searchQuery, movies[0]);
+    }
+  }, [movies]);
 
   return (
     <View className="flex-1 bg-primary">

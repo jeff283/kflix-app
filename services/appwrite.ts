@@ -32,14 +32,9 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
     if (results.documents.length > 0) {
       const exisitingMovie = results.documents[0];
 
-      await database.updateDocument(
-        DB_ID,
-         COLLECTION_ID,
-          exisitingMovie.$id, 
-          {
-          count: exisitingMovie.count + 1,
-          }
-    );
+      await database.updateDocument(DB_ID, COLLECTION_ID, exisitingMovie.$id, {
+        count: exisitingMovie.count + 1,
+      });
     } else {
       await database.createDocument(DB_ID, COLLECTION_ID, ID.unique(), {
         searchTerm: query,
@@ -52,5 +47,23 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
   } catch (error) {
     console.error("Error updating search count:", error);
     throw error;
+  }
+};
+
+// get search history
+
+
+export const getTrendingMovies = async (): Promise<TrendingMovie[] | undefined> => {
+  try {
+    const results = await database.listDocuments(DB_ID, COLLECTION_ID, [
+      Query.limit(5),
+      Query.orderDesc("count"),
+    ]);
+
+    return results.documents as unknown as TrendingMovie[];
+
+  } catch (error) {
+    console.error("Error fetching trending movies: ", error);
+    return undefined;
   }
 };
