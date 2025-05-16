@@ -26,3 +26,6 @@ export const fetchMovies = async ({ query }: { query: string }): Promise<Movie[]
   const data = await response.json();
   return data.results;
 };
+
+
+

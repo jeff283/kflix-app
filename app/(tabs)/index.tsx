@@ -68,9 +68,8 @@ export default function Index() {
               placeholder="Search for a movie"
             />
 
-
             {/* Trending Movies */}
-            {trendingMovies && (
+             {(trendingMovies?.length ?? 0) > 0 && (
               <View className="mt-10">
                 <Text className="text-lg text-white font-bold mt-5 mb-3">
                   Trending Movie
@@ -79,22 +78,21 @@ export default function Index() {
             )}
 
             <>
-        
               <FlatList
                 data={trendingMovies}
                 keyExtractor={(item) => item.movie_id.toString()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                ItemSeparatorComponent={() => <View className="w-4"></View>}
+                ItemSeparatorComponent={() => <View className="w-10"></View>}
                 renderItem={({ item, index }) => (
-                  <TrendingCard movie={item} index={index}/>
+                  <TrendingCard movie={item} index={index} />
                 )}
               />
             </>
 
-      <Text className="text-lg text-white font-bold mt-5 mb-3">
-                Latest Movies
-              </Text>
+            <Text className="text-lg text-white font-bold mt-5 mb-3">
+              Latest Movies
+            </Text>
             <FlatList
               data={movies}
               keyExtractor={(item) => item.id.toString()}
